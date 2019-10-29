@@ -1,0 +1,34 @@
+{
+  "name": "eureka",
+  "version": "1.0.0",
+  "description": "Aplicación para ubicación y manejo de inventarios de taller en hangar",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EderLara/eureka.git"
+  },
+  "keywords": [
+    "hangar",
+    "inventario",
+    "taller",
+    "NodeJs",
+    "nodejs",
+    "node",
+    "api",
+    "sintaxis",
+    "semillero",
+    "de",
+    "investigación",
+    "sena",
+    "ctma"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/EderLara/eureka/issues"
+  },
+  "homepage": "https://github.com/EderLara/eureka#readme"
+}
