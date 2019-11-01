@@ -8,7 +8,7 @@ let bcrypt = require('bcrypt-nodejs');
 // Importamos el servicio jwt encargado de los tokens:
 let jwt = require('../services/jwt');
 // Cargamos el mongoose de paginacion:
-let mongoosePaginate = require('mongoose-pagination');
+let mongoosePaginate = require('mongoose-pagination');n
 // Libreria para manejo de archivos y de url:
 let fs = require('fs');
 let path = require('path');
