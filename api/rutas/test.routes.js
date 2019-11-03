@@ -19,9 +19,9 @@ const md_upload = multipart({ uploadDir: './uploads/media'});
 api.get('/home', TestController.home);
 api.get('/pruebas', TestController.pruebas);
 
-// Rutas del Crud de Usuario: aplicacion corre desde: http://localhost:3800/api
-//api.post('/registro', TestController.saveUser);
-//api.post('/login', TestController.loginUser);
+// Rutas del Crud de Test: aplicacion corre desde: http://localhost:3800/api
+api.post('/registro', TestController.saveUser);
+api.post('/login', TestController.loginUser);
 
 
 /*        Exportamos la ruta:       */

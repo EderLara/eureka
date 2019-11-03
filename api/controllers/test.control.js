@@ -8,7 +8,7 @@ let bcrypt = require('bcrypt-nodejs');
 // Importamos el servicio jwt encargado de los tokens:
 let jwt = require('../services/jwt');
 // Cargamos el mongoose de paginacion:
-let mongoosePaginate = require('mongoose-pagination');n
+let mongoosePaginate = require('mongoose-pagination');
 // Libreria para manejo de archivos y de url:
 let fs = require('fs');
 let path = require('path');
@@ -32,7 +32,7 @@ function saveUser(req, res){
 	// Variable que captura los campos del formulario:
 	var params = req.body;
 	//  Variable para almacenar en el modelo:
-	var test = new User();
+	var test = new Test();
 	// Validamos si los campos obligatorios estan llenos:
 	if (params.identificacion && params.nombres && params.apellidos && params.email && params.passuser) {
 		// Asignamos el valor obtenido por post a las variables:
@@ -46,7 +46,7 @@ function saveUser(req, res){
 		test.email = params.email;
 
 		// Sentencias para consultar en la base de datos:
-		User.find({ $or: [
+		Test.find({ $or: [
 					{ identificacion: test.identificacion},
 					{ email: test.email }
 				  ]})
@@ -317,13 +317,13 @@ function getImageFile(req, res){
 // exportamos las funciones:
 module.exports = {
 	home,
-	pruebas
-	// saveUser,
-	// loginUser,
-	// getUser,
-	// getPoblacion,
-	// getUsers,
-	// updateUser,
-	// addImage,
-	// getImageFile
+	pruebas,
+	saveUser,
+	loginUser,
+	getUser,
+	getPoblacion,
+	getUsers,
+	updateUser,
+	addImage,
+	getImageFile
 }

@@ -20,6 +20,7 @@ mongoose.connect('mongodb://localhost:27017/eureka', { useNewUrlParser: true, us
 	app.listen(port,() => {
 		// Mostramos mensaje de conexión al servidor:
 		console.log("Servidor NodeJS corriendo en: http://localhost:"+port);
+		console.log("Podemos probar la api desde: http://localhost:"+port+"/api/ruta");
 	})
 })
 // Si hay algún error, lo imprimimos:

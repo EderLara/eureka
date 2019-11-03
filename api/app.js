@@ -29,7 +29,3 @@ app.use('/api', rutastest);
 
 // Exportamos la variable app:
 module.exports = app;
-
-
-// https://blog.desdelinux.net/reparar-sectores-recuperar-hdd-linux/
-
