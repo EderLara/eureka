@@ -13,7 +13,7 @@ const testSchema = Schema({
 	imgPerfil : String,
 	rolUser : String,
 	genero : String,
-	fechanace : String,
+	fechanace : Date,
 	email : String,
 	passuser : String,
 	estauser : String

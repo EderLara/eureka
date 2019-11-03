@@ -30,7 +30,7 @@ function pruebas(req, res){
 // Funcion Guardar test:
 function saveUser(req, res){
 	// Variable que captura los campos del formulario:
-	var params = req.body;
+	const params = req.body;
 	//  Variable para almacenar en el modelo:
 	var test = new Test();
 	// Validamos si los campos obligatorios estan llenos:
@@ -39,11 +39,13 @@ function saveUser(req, res){
 		test.identificacion = params.identificacion;
 		test.nombres = params.nombres; 
 		test.apellidos = params.apellidos;
-		test.imgPerfil = 'uploads/imgUser.png'; // También podemos asignarles un valor desde el control,
+		test.imgPerfil = 'uploads/test/imgUser.png'; // También podemos asignarles un valor desde el control,
 		test.rolUser = 'ClienteBD';
 		test.genero = params.genero;
 		test.fechanace = params.fechanace;
 		test.email = params.email;
+		// Almacenamos la ultima columna o el ultimo registro el documento
+		// test.estado = 'Activo';
 
 		// Sentencias para consultar en la base de datos:
 		Test.find({ $or: [
@@ -75,13 +77,11 @@ function saveUser(req, res){
 				 					// Si no hay error de servidor pero tampoco se guardó el test mostramos un mensaje de error:
 				 					res.status(404).send({
 				 						message: 'Error no se ha guardado el test'
-				 					})
+				 					});
 				 				}
 				 			});
 
 				 		});
-				 		// Almacenamos la ultima columna o el ultimo registro el documento
-				 		test.estado = 'Activo';
 				 	}
 				 });
 
@@ -97,16 +97,16 @@ function saveUser(req, res){
 // Inicio de sesion de test:
 function loginUser(req, res){
 	// Recogemos los datos del formulario:
-	var params = req.body;
-	var username = params.email;
-	var password = params.passuser;
+	const params = req.body;
+	let username = params.email;
+	let password = params.passuser;
 
 	// Query para comprobar test y contraseña en la base de datos:
-	User.findOne({email: username}, (err, user)=>{
+	Test.findOne({email: username}, (err, user)=>{
 		// Si existe algun error:
 		if (err) return res.status(500).send({ message: 'Error en la peticion, Revisa la conexion a la base de datos' });
 		if (user) {
-			// Encriptamos el password y comparamos utilizando el metodo "compare":
+			// Encriptamos el password en params y comparamos utilizando el metodo "compare":
 			bcrypt.compare(password, user.passuser, (err, check) =>{
 				if (check) {
 					// check es un parametro para determinar el chequeo es decir, que todo va bien
@@ -138,7 +138,7 @@ function getUser(req, res){
 	// Recogemos el id por URL, cuando es por URL utilizamos .params, cuando es por post o get usamos .body
 	var userId = req.params.id;
 
-	User.findById(userId, (err, user) =>{
+	Test.findById(userId, (err, user) =>{
 		// validamos si hay algun error de conexion a la bd o de ejecucion:
 		if (err) return res.status(500).send({
 			message: 'Ha habido un error en la conexion o en la busqueda del test'
@@ -186,7 +186,7 @@ function getUsers(req, res){
 	var itemsPerPage = 25;
 
 	// Query de busqueda de tests en la BD:
-	User.find().sort('_id').paginate(pagina, itemsPerPage, (err, users, total) =>{
+	Test.find().sort('_id').paginate(pagina, itemsPerPage, (err, users, total) =>{
 		// validamos si hay algun error de conexion a la bd o de ejecucion:
 		if (err) return res.status(500).send({
 			message: 'Ha habido un error en la conexion o en la busqueda del test'
@@ -218,7 +218,7 @@ function updateUser(req, res){
 	if (userId != req.user.sub) {
 		return res.status(500).send({ message: 'No tienes permiso para actualizar los datos de test, debes iniciar sesion' });
 	}
-	User.findByIdAndUpdate(userId, update, {new: true}, (err, userUpdated) =>{
+	Test.findByIdAndUpdate(userId, update, {new: true}, (err, userUpdated) =>{
 		// Si ocurre un error inesperado de servicios:
 		if(err) return res.status(500).send({message: 'Error en la Peticion, error de servidor' });
 		// Si no se encuentran datos del test:
