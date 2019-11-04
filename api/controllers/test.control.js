@@ -152,25 +152,6 @@ function getUser(req, res){
 }
 // Fin de Buscar un test
 // ----------------------------------------------------------- //
-// ----------------------------------------------------------- //
-// Inicio de metodo de buscar la poblacion, o todos los tests:
-function getPoblacion(req, res){
-	// Recogemos el id por URL, cuando es por URL utilizamos .params, cuando es por post o get usamos .body
-
-	DatoUsua.find((err, poblacion) =>{
-		// validamos si hay algun error de conexion a la bd o de ejecucion:
-		if (err) return res.status(500).send({
-			message: 'Ha habido un error en la conexion o en la busqueda del test'
-		});
-		if (!poblacion) return res.status(404).send({
-			message: 'No se han encontrado conincidencias con el parametro de busqueda'
-		});
-		// Si encuentra al test, nos muestra al test:
-		return res.status(200).send({ poblacion });
-	});
-}
-// Fin de Buscar un test
-// ----------------------------------------------------------- //
 // Inicio de metodo listar tests:
 function getUsers(req, res){
 	// usuar del middleware la propiedad sub que es el Id de test logueado:
@@ -259,7 +240,7 @@ function addImage(req, res){
 		// Comprobamos que las extenciones son correctas:
 		if (extFile == 'png' || extFile == 'jpg' || extFile == 'jpeg' || extFile == 'bmp' || extFile == 'gif') {
 			//  Estas seran las extenciones validas que le permitiremos al test, para guardar en la base de datos:
-			User.findByIdAndUpdate(userId, {image: fileName}, {new: true}, (err, userUpdated) =>{
+			Test.findByIdAndUpdate(userId, {image: fileName}, {new: true}, (err, userUpdated) =>{
 
 				// Si ocurre un error inesperado de servicios:
 				if(err) return res.status(500).send({message: 'Error en la Peticion, error de servidor' });
@@ -297,7 +278,7 @@ function getImageFile(req, res){
 	// variable del archivo imagen a devolver:
 	var imageFile = req.params.imageFile;
 	// variable de la ruta de la imagen:
-	var pathFile = './uploads/tests/'+imageFile;
+	var pathFile = './uploads/test/'+imageFile;
 	// Comprobamos que el arhivo existe:
 	fs.exists(pathFile, (exists) =>{
 		if (exists) {
@@ -321,7 +302,6 @@ module.exports = {
 	saveUser,
 	loginUser,
 	getUser,
-	getPoblacion,
 	getUsers,
 	updateUser,
 	addImage,
