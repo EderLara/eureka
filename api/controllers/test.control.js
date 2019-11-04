@@ -270,7 +270,6 @@ function removerarchivo(res, filePath, message){
 }
 
 // ----------------------------------------------------------- //
-
 // Funcion para devolver la imagen del test:
 function getImageFile(req, res){
 	// variable del archivo imagen a devolver:
@@ -285,14 +284,10 @@ function getImageFile(req, res){
 			res.status(200).send({ message: 'No existe la imagen' });
 		}
 	});
-
 }
 // Fin de mostrar imagen.
 // ----------------------------------------------------------- //
 /*------------------------------------ FIN CRUD test: ----------------------------------------*/
-
-
-
 // exportamos las funciones:
 module.exports = {
 	home,
