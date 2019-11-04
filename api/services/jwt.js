@@ -9,7 +9,7 @@ const secret = 'clave_secreta_pruebas_node_js';
 
 // Creamos el objeto createToken:
 exports.createToken = function(user){
-	let payload = {
+	var payload = {
 	    //Atributos de la entidad test:
 		sub: user._id,
 		identificacion : user.identificacion,

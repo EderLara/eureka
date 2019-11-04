@@ -8,7 +8,6 @@ const moment = require('moment');
 const secret = 'clave_secreta_pruebas_node_js';
 
 // Función para verificación de cabeceras de identificación, respuesta y permisos:
-
 exports.ensureAuth = function(req, res, next){
     // Validamos el parámetro de autenticación:
     if(!req.headers.authorization){
@@ -17,14 +16,12 @@ exports.ensureAuth = function(req, res, next){
             message : 'No se pueden verificar los parámetros de identificación'
         });
     }
-    
     // Limpiamos el parámetro token, eliminando la cadena de caracteres del html (['"] y g):
-    let token = req.headers.authorization.replace(/['"]+/g, '')
-    
+    var token = req.headers.authorization.replace(/['"]+/g, '')  
     // Probamos decodificar el payload del usuario:
     try{
         // Decodificamos el pyload pasandolo por el servicio de jwt:
-        let payload = jwt.decode(token, secret);
+        var payload = jwt.decode(token, secret);
         // Validamos la fecha de caducidad:
         if(payload.exp <=moment().unix()){
             // Si la validación no pasa, pero el token si hace parte del usuario, mostramos el mensaje de expiración:
@@ -32,17 +29,14 @@ exports.ensureAuth = function(req, res, next){
                 message : 'El tokén a expirado, Reinicie la Sesión.'
             });
         }
-
     }catch(ex){
         // Si no se reconoce el identificador del usuario, se le solicitará iniciar sesión:
         return res.status(404).send({
             message : 'El tokén no es Válido. Por favor inicie sesión'
         });
     }
-
     // Devolvemos al servicio el payload con la autorización:
-    req.user = payload
-
+    req.user = payload;
     // Continuamos:
     next();
 }

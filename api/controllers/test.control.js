@@ -156,7 +156,6 @@ function getUser(req, res){
 function getUsers(req, res){
 	// usuar del middleware la propiedad sub que es el Id de test logueado:
 	var idsUserid = req.user.sub;
-
 	// Variable para paginar, por defecto = 1:
 	var pagina = 1;
 
@@ -165,7 +164,6 @@ function getUsers(req, res){
 	}
 	// Variable para determinar la cantidad de tests conectados
 	var itemsPerPage = 25;
-
 	// Query de busqueda de tests en la BD:
 	Test.find().sort('_id').paginate(pagina, itemsPerPage, (err, users, total) =>{
 		// validamos si hay algun error de conexion a la bd o de ejecucion:
