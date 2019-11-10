@@ -219,6 +219,7 @@ function addImage(req, res){
 	if (req.files) {
 		// Ponemos el archivo a subir en una variable, image es el nombre del campo que debe tener el input:
 		var filePath = req.files.image.path;
+		console.log(filePath);
 		// Se toman los separadores de la ruta del archivo y se eliminan:
 		var fileSplit = filePath.split('\\');
 		console.log(fileSplit);
@@ -237,9 +238,9 @@ function addImage(req, res){
 		}
 		// Comprobamos que las extenciones son correctas:
 		if (extFile == 'png' || extFile == 'jpg' || extFile == 'jpeg' || extFile == 'bmp' || extFile == 'gif') {
-			//  Estas seran las extenciones validas que le permitiremos al test, para guardar en la base de datos:
-			Test.findByIdAndUpdate(userId, {image: fileName}, {new: true}, (err, userUpdated) =>{
-
+			// Estas seran las extenciones validas que le permitiremos al test, para guardar en la base de datos.
+			// Procederemos a buscar al usuario y a actualizar el atributo imgPerfil:
+			Test.findByIdAndUpdate(userId, {imgPerfil: fileName}, {new: true}, (err, userUpdated) =>{
 				// Si ocurre un error inesperado de servicios:
 				if(err) return res.status(500).send({message: 'Error en la Peticion, error de servidor' });
 				// Si no se encuentran datos del test:
@@ -247,7 +248,6 @@ function addImage(req, res){
 
 				// Si todo sale bien devuelve al test modificado:
 				return res.status(200).send({ user: userUpdated });
-
 			});
 		}else{
 			// Llamamos a la funcion que elimina el archivo de la carpeta uploads:
@@ -260,7 +260,6 @@ function addImage(req, res){
 }
 // Fin de cargar imagen.
 // ----------------------------------------------------------- //
-
 // Funcion auxiliar, o metodo para elimiar archivos de la carpeta uploads/tests :
 function removerarchivo(res, filePath, message){
 	//  El arhivo no es una imagen, por lo que lo vamos a eliminar del directorio, para eso usamos el metodo unlink, y la variable fs:

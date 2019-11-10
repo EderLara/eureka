@@ -40,3 +40,9 @@ exports.ensureAuth = function(req, res, next){
     // Continuamos:
     next();
 }
+
+/** 
+ * Autenticación
+ * @author: Eder Lara T.
+ * @año: 2019
+*/

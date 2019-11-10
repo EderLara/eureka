@@ -12,7 +12,7 @@ const multipart = require('connect-multiparty');
 // Cargar middleware:
 const md_auth = require('../middleware/autenticacion');
 // Middleware para subir archivos:
-const md_upload = multipart({ uploadDir: './uploads/test'});
+const md_upload = multipart({ uploadDir: './uploads/test/'});
 
 // Rutas para ensayar:
 api.get('/home', TestController.home);
