@@ -1,0 +1,7 @@
+.bgfondo{
+    height: 30rem;
+    background-image: url(../../../assets/media/img/network.jpg);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+}

@@ -1,0 +1,6 @@
+.my-freaky-tooltip .arrow::before{
+    border-top-color: red !important;
+}
+.my-freaky-tooltip .tooltip-inner{
+    background-color: red !important;
+}

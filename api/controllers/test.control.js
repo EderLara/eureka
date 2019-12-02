@@ -245,7 +245,6 @@ function addImage(req, res){
 				if(err) return res.status(500).send({message: 'Error en la Peticion, error de servidor' });
 				// Si no se encuentran datos del test:
 				if(!userUpdated) return res.status(404).send({ message: 'No se ha podido actualizar al test '});
-
 				// Si todo sale bien devuelve al test modificado:
 				return res.status(200).send({ user: userUpdated });
 			});
