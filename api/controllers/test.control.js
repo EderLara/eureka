@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 /* Modelos (collections) de datos a Usar: */
 let Test = require('../models/test.model');
@@ -39,8 +39,15 @@ function saveUser(req, res){
 		test.identificacion = params.identificacion;
 		test.nombres = params.nombres; 
 		test.apellidos = params.apellidos;
-		test.imgPerfil = 'uploads/test/imgUser.png'; // También podemos asignarles un valor desde el control,
-		// Aquí haremos un pequeño control para agregar usuarios de acuerdoa su rol:
+		// Vamos a controlar la imagen por defecto según el sexó del usuario:
+		if (params.genero === 'F') {
+			// Si el usuario es Femenino, la imagen será la de la niña
+			test.imgPerfil = 'uploads/test/female.png';
+		}else{
+			// Si por el contrario es Masculino, pintaremos la del niño:
+			test.imgPerfil = 'uploads/test/male.png'; 
+		}
+		// Aquí haremos un pequeño control para agregar usuarios de acuerdo a su rol:
 		if(!params.rolUser){
 			// Si no se encuentra el rol asignado, por defecto agregamos el rol 'ClienteBD'
 			test.rolUser = 'ClienteBD';
@@ -98,7 +105,6 @@ function saveUser(req, res){
 			message: 'Debes llenar los campos obligatorios' 
 		});
 	}
-
 }
 // Fin del metodo de guardar test
 // ----------------------------------------------------------- //
