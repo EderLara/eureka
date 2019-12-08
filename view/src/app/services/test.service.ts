@@ -22,7 +22,11 @@ export class LoginService{
         // Dentro del constructor, pasamos la url de la api, puesto que es allí donde se ejecutan los controles:
         this.url = GLOBAL.url;
     }
-    // Funciones de test.service:
+    // ----------------- Funciones de test.service:  ----------------- \\
+
+    // Función de registro de Test:
+
+    // -----------------------------------------//
     // Funcion de ingreso, login:
     ingreso(usertest, gettoken = null): Observable<any>{
         // Comprobaremos que el token sea válido:
@@ -55,7 +59,6 @@ export class LoginService{
         // Retornamos el resultado de identidad:
         return this.identidad;
     }
-
 
     // Función para identificar al usuario logueado:
     getToken(){
