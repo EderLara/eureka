@@ -40,12 +40,20 @@ function saveUser(req, res){
 		test.nombres = params.nombres; 
 		test.apellidos = params.apellidos;
 		test.imgPerfil = 'uploads/test/imgUser.png'; // También podemos asignarles un valor desde el control,
-		test.rolUser = 'ClienteBD';
+		// Aquí haremos un pequeño control para agregar usuarios de acuerdoa su rol:
+		if(!params.rolUser){
+			// Si no se encuentra el rol asignado, por defecto agregamos el rol 'ClienteBD'
+			test.rolUser = 'ClienteBD';
+		}else{
+			// De lo contrario, le diremos cual es el rol del usuario:
+			test.rolUser = params.rolUser;
+		}
+		// Continuamos agregando los otros parámetros:
 		test.genero = params.genero;
 		test.fechanace = params.fechanace;
 		test.email = params.email;
 		// Almacenamos la ultima columna o el ultimo registro el documento
-		// test.estado = 'Activo';
+		test.estauser = 'Activo';
 
 		// Sentencias para consultar en la base de datos:
 		Test.find({ $or: [
@@ -154,7 +162,7 @@ function getUser(req, res){
 // ----------------------------------------------------------- //
 // Inicio de metodo listar tests:
 function getUsers(req, res){
-	// usuar del middleware la propiedad sub que es el Id de test logueado:
+	// usuario del middleware la propiedad sub que es el Id de test logueado:
 	var idsUserid = req.user.sub;
 	// Variable para paginar, por defecto = 1:
 	var pagina = 1;
