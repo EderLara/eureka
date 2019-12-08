@@ -7,6 +7,7 @@ import { GLOBAL } from './apisrc';
 import { Test } from '../models/test.model';
 
 @Injectable()
+// Clase para el inicio de sesión
 export class LoginService{
     // Variables globales de la clase loginService:
     public url: string;

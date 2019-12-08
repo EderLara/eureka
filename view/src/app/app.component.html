@@ -21,7 +21,9 @@
         <div class="dropdown-menu right" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="#">BackEnd</a>
           <a class="dropdown-item" href="#">FrontEnd</a>
+          <a class="dropdown-item" href="#">FullStack</a>
           <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Soluciones BigData</a>
           <a class="dropdown-item" href="#">Análisis de Datos</a>
         </div>
       </li>
@@ -30,20 +32,24 @@
       </li>
     </ul>
     <ul class="navbar-nav my-2 my-lg-0">
-        <li class="nav-item active">
-            <a href="https://classroom.google.com/u/1/c/MzMzMTQzOTU2MzRa" target="_blank" placement="bottom" ngbTooltip="Gloogle Classroom" tooltipClass="my-freaky-tooltip" class="nav-link"><i class="fab fa-google"></i>&nbsp;</a>
-        </li>
-        <li class="nav-item active">
-            <a href="https://github.com/EderLara/eureka" target="_blank" placement="bottom" ngbTooltip="Repositorio" tooltipClass="my-freaky-tooltip" class="nav-link"><i class="fab fa-github"></i>&nbsp;</a>
-        </li>
-        <li class="nav-item active">
-            <a href="https://www.linkedin.com/in/eder-lara-trujillo-659047125/" target="_blank" placement="bottom" tooltipClass="my-freaky-tooltip" ngbTooltip="Perfil de Linkedin" class="nav-link"><i class="fab fa-linkedin"></i>&nbsp;</a>
-        </li>
       <li class="nav-item active">
-        <a href="" class="nav-link"><i class="far fa-user-circle"></i>&nbsp;Ingreso</a>
+        <a href="https://classroom.google.com/u/1/c/MzMzMTQzOTU2MzRa" target="_blank" placement="bottom" ngbTooltip="Gloogle Classroom" tooltipClass="my-freaky-tooltip" class="nav-link text-danger"><i class="fab fa-google"></i>&nbsp;</a>
+      </li>
+      <li class="nav-item active">
+        <a href="https://github.com/EderLara/eureka" target="_blank" placement="bottom" ngbTooltip="Repositorio" tooltipClass="my-freaky-tooltip" class="nav-link"><i class="fab fa-github"></i>&nbsp;</a>
+      </li>
+      <li class="nav-item active">
+        <a href="https://www.linkedin.com/in/eder-lara-trujillo-659047125/" target="_blank" placement="bottom" tooltipClass="my-freaky-tooltip" ngbTooltip="Perfil de Linkedin" class="nav-link text-info"><i class="fab fa-linkedin"></i>&nbsp;</a>
+      </li>
+      <li class="nav-item active">
+        <a [routerLink]="['link']" target="_blank" placement="bottom" tooltipClass="my-freaky-tooltip" ngbTooltip="Ayuda" class="nav-link text-warning"><i class="far fa-question-circle"></i>&nbsp;</a>
+      </li>
+      <li class="nav-item active">
+        <a [routerLink]="['ingreso']" class="nav-link"><i class="far fa-user-circle"></i>&nbsp;<b>Ingreso</b></a>
       </li>
     </ul>
   </div>
 </nav>
 <!-- Visualización de las otras páginas -->
 <router-outlet></router-outlet>
+

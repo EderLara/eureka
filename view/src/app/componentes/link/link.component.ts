@@ -7,8 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LinkComponent implements OnInit {
 
-
-  constructor() { }
+  public developer: string;
+  public imgdev: string;
+  constructor() {
+    this.developer = 'Eder Lara Trujillo';
+    this.imgdev = 'assets/media/img/Eder.jpeg';
+   }
 
   ngOnInit() {
   }
