@@ -25,8 +25,17 @@ export class LoginService{
     // ----------------- Funciones de test.service:  ----------------- \\
 
     // Función de registro de Test:
-
-    // -----------------------------------------//
+    registro(usertest: Test): Observable<any>{
+        // Observamos que objeto se ha obtenido del fomulario:
+        console.log(usertest);
+        // Convertimos en un objeto JSON los datos del formulario:
+        let params = JSON.stringify(usertest);
+        // Pasamos las cabeceras de la vista:
+        let headers = new HttpHeaders().set('Content-Type', 'application/json');
+        // Pasamos a la ruta del registro del usertest:
+        return this._http.post(this.url+'/registro', params, {headers:headers})
+    }
+    // ----------------------------------------- \\
     // Funcion de ingreso, login:
     ingreso(usertest, gettoken = null): Observable<any>{
         // Comprobaremos que el token sea válido:
@@ -39,9 +48,9 @@ export class LoginService{
         // Le pasamos las cabeceras al servicio http:
         let headers = new HttpHeaders().set('Content-Type','application/json');
         // Retornamos al control los datos obtenidos y esperamos la respuesta:
-        return this._http.post(this.url+'/ingreso', params, {headers:headers});
+        return this._http.post(this.url+'/login', params, {headers:headers});
     }
-
+    // ----------------------------------------- \\
     //Funcion para el ingreso del usuario logueado:
     getIdentidad(){
         // Variable para traer los datos del usuario, para el ejercicio lo llamo identidad:
@@ -59,7 +68,7 @@ export class LoginService{
         // Retornamos el resultado de identidad:
         return this.identidad;
     }
-
+    // ----------------------------------------- \\
     // Función para identificar al usuario logueado:
     getToken(){
         // Variable para obtener el token del usuario logueado desde el navegador:
@@ -76,7 +85,8 @@ export class LoginService{
         // Retornamos el token del usuario:
         return this.token;
     }
+    // ----------------------------------------- \\
 
-    // Fin de la clase servicio
+    // ----------------- Fin Funciones de test.service:  ----------------- \\
 }
 
