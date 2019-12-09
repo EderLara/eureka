@@ -1,65 +1,67 @@
 <section class="container">
-    <div class="row">
-        <div class="col-md-4">
-            <h2 class="text-center text-primary mt-2"><b>Eureka | App</b></h2>
-            <img src="{{ registroimg }}" alt="" class="img-fluid mt-2 mb-3">
-            <h4 class="text-muted text-justify">
-                {{ description }}
-            </h4>
-            <p class="text-success">
-                Escrito y dirigido por <b><em>Eder Lara T.</em></b>
-            </p>
-        </div>
-        <div class="col-md-8 mt-2 px-3">
-            <h2 class="text-primary"><b>Registrate Como Usuario</b></h2>
-            <form>
-                <div class="form-row">
-                 <div class="form-group col-md-6">
-                        <label for="nombres">Nombres</label>
-                        <input type="text" class="form-control" id="nameuser" name="nameuser">
-                  </div>
-                  <div class="form-group col-md-6">
-                        <label for="apellidos">Apellidos</label>
-                        <input type="text" class="form-control" id="apeluser" name="apeluser">
-                  </div>
-                  <div class="form-group col-md-4">
-                       <label for="identificacion">Número de Identificación</label>
-                       <input type="text" class="form-control" id="iduser" name="iduser">
-                  </div>
-                  <div class="form-group col-md-4">
-                        <label for="birthday">Fecha de Nacimiento</label>
-                        <input type="date" class="form-control" id="fechanace" name="fechanace">
-                   </div>
-                  <div class="form-group col-md-4">
-                        <label for="inputState">Género</label>
-                        <select id="inputState" class="form-control">
-                          <option selected>Seleccione una Opción...</option>
-                          <option value="F">Femenino</option>
-                          <option value="M">Masculino</option>
-                        </select>
-                      </div>
-                  <div class="form-group col-md-12">
-                        <label for="inputEmail4">Email</label>
-                        <input type="email" class="form-control" id="inputEmail4">
-                      </div>
-                  <div class="form-group col-md-6">
-                    <label for="inputPassword4">Password</label>
-                    <input type="password" class="form-control" id="inputPassword4">
-                  </div>
-                  <div class="form-group col-md-6">
-                        <label for="inputPassword4">Password</label>
-                        <input type="password" class="form-control" id="inputPassword4">
-                  </div>
-                  <div class="form-group col-md-6" *ngIf='rol' > 
-                    <label for="inputAddress">Rol de Usuario en la Organización</label>
-                    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-                  </div>
-                </div>                
-                <div class="col-md-12 row justify-content-between">
-                    <span></span>
-                    <button type="submit" class="btn btn-primary mr-0">Registrar</button>
-                </div>
-              </form>
-        </div>
+  <div class="row">
+    <div class="col-md-4">
+      <h2 class="text-center text-primary mt-2"><b>Eureka | App</b></h2>
+      <img src="{{ registroimg }}" alt="" class="img-fluid mt-2 mb-3">
+      <h4 class="text-muted text-justify">
+        {{ description }}
+      </h4>
+      <p class="text-success">
+        Escrito y dirigido por <b><em>Eder Lara T.</em></b>
+      </p>
     </div>
+    <div class="col-md-8 mt-2 px-3">
+      <h2 class="text-primary"><b>Registrate Como Usuario</b></h2>
+      <!-- Agregamos a la etiqueta form, las propiedades para capturar los datos -->
+      <form (ngSubmit)="regTest(regUser)" #regUser="ngForm" novalidate="">
+        <div class="form-row">
+         <div class="form-group col-md-6">
+          <label>Nombres</label>
+          <input required type="text" name="nombres" ngModel class="form-control">
+          <!-- <span *ngIf="!nombres.valid && nombres.touched" class="alert alert-danger" role="alert">El Nombre es Obligatorio!</span> -->
+        </div>
+        <div class="form-group col-md-6">
+          <label for="apellidos">Apellidos</label>
+          <input required type="text" name="apeluser" ngModel class="form-control" >
+        </div>
+        <div class="form-group col-md-4">
+         <label for="identificacion">Número de Identificación</label>
+         <input required type="text" name="identificacion" ngModel class="form-control">
+       </div>
+       <div class="form-group col-md-4">
+        <label for="fechanace">Fecha de Nacimiento</label>
+        <input required type="date" name="fechanace" ngModel class="form-control">
+      </div>
+      <div class="form-group col-md-4">
+        <label for="genero">Género</label>
+        <select required id="genero" name="genero" ngModel class="form-control">
+          <option>Seleccione una Opción...</option>
+          <option [value]="F">Femenino</option>
+          <option [value]="M">Masculino</option>
+        </select> 
+      </div>
+      <div class="form-group col-md-12">
+        <label for="email">Email</label>
+        <input required type="email" name="email" ngModel class="form-control" id="email">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputPassword4">Password</label>
+        <input required type="password" name="passuser" ngModel class="form-control">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputPassword4">Confirmar Password</label>
+        <input required type="password" name="passuser" ngModel class="form-control" id="">
+      </div>
+      <div class="form-group col-md-6" *ngIf='rol' > 
+        <label for="rolUser">Rol de Usuario en la Organización</label>
+        <input required type="text" name="rolUser" ngModel class="form-control" placeholder="1234 Main St">
+      </div> 
+    </div>                 
+    <div class="col-md-12 row justify-content-between">
+      <span></span>
+      <button type="submit" class="btn btn-primary mr-0">Registrar</button>
+    </div>
+  </form>
+</div>
+</div>
 </section>
