@@ -13,48 +13,47 @@
     <div class="col-md-8 mt-2 px-3">
       <h2 class="text-primary"><b>Registrate Como Usuario</b></h2>
       <!-- Agregamos a la etiqueta form, las propiedades para capturar los datos -->
-      <form (ngSubmit)="regTest(regUser)" #regUser="ngForm" novalidate="">
+      <form (ngSubmit)="regTest(regUser)">
         <div class="form-row">
          <div class="form-group col-md-6">
           <label>Nombres</label>
-          <input required type="text" name="nombres" ngModel class="form-control">
+          <input required type="text" name="nombres" class="form-control">
           <!-- <span *ngIf="!nombres.valid && nombres.touched" class="alert alert-danger" role="alert">El Nombre es Obligatorio!</span> -->
         </div>
         <div class="form-group col-md-6">
           <label for="apellidos">Apellidos</label>
-          <input required type="text" name="apeluser" ngModel class="form-control" >
+          <input required type="text" name="apeluser" class="form-control" >
         </div>
         <div class="form-group col-md-4">
          <label for="identificacion">Número de Identificación</label>
-         <input required type="text" name="identificacion" ngModel class="form-control">
+         <input required type="text" name="identificacion" class="form-control">
        </div>
        <div class="form-group col-md-4">
         <label for="fechanace">Fecha de Nacimiento</label>
-        <input required type="date" name="fechanace" ngModel class="form-control">
+        <input required type="date" name="fechanace" class="form-control">
       </div>
       <div class="form-group col-md-4">
         <label for="genero">Género</label>
-        <select required id="genero" name="genero" ngModel class="form-control">
+        <select required id="genero" name="genero" class="form-control">
           <option>Seleccione una Opción...</option>
-          <option [value]="F">Femenino</option>
-          <option [value]="M">Masculino</option>
+            <option *ngFor="let genero of sexo" [value]="sexo.code">{{ sexo.name }}</option>
         </select> 
       </div>
       <div class="form-group col-md-12">
         <label for="email">Email</label>
-        <input required type="email" name="email" ngModel class="form-control" id="email">
+        <input required type="email" name="email" class="form-control" id="email">
       </div>
       <div class="form-group col-md-6">
         <label for="inputPassword4">Password</label>
-        <input required type="password" name="passuser" ngModel class="form-control">
+        <input required type="password" name="passuser" class="form-control">
       </div>
       <div class="form-group col-md-6">
         <label for="inputPassword4">Confirmar Password</label>
-        <input required type="password" name="passuser" ngModel class="form-control" id="">
+        <input required type="password" name="passuser" class="form-control" id="">
       </div>
       <div class="form-group col-md-6" *ngIf='rol' > 
         <label for="rolUser">Rol de Usuario en la Organización</label>
-        <input required type="text" name="rolUser" ngModel class="form-control" placeholder="1234 Main St">
+        <input required type="text" name="rolUser" class="form-control" placeholder="1234 Main St">
       </div> 
     </div>                 
     <div class="col-md-12 row justify-content-between">
