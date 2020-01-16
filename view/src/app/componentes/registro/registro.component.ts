@@ -36,16 +36,16 @@ export class RegistroComponent implements OnInit {
   ) {
     // Constructor de formulario para registro de usuario:
     this.regUser = new FormGroup({
-      'identificacion': new FormControl(),
-      'nombres': new FormControl(),
-      'apellidos': new FormControl(),
-      'imgPerfil': new FormControl(),
-      'rolUser': new FormControl(),
-      'genero': new FormControl(),
-      'fechanace': new FormControl(),
-      'email': new FormControl(),
-      'passuser': new FormControl(),
-      'estauser': new FormControl()
+      'identificacion': new FormControl('', [Validators.required, Validators.minLength(5)]),
+      'nombres': new FormControl('', Validators.required),
+      'apellidos': new FormControl('', Validators.required),
+      'imgPerfil': new FormControl('', Validators.required),
+      'rolUser': new FormControl('', Validators.required),
+      'genero': new FormControl('', Validators.required),
+      'fechanace': new FormControl('', Validators.required),
+      'email': new FormControl('', [Validators.required, Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$")]),
+      'passuser': new FormControl('', Validators.required),
+      'estauser': new FormControl('Activo')
     });
     // Variables del constructor
     this.rol = false;
@@ -63,4 +63,7 @@ export class RegistroComponent implements OnInit {
   //   console.log('Probando la funcionalidad del boton');
   //   console.log("Valor", regUser.value);
   // }
+  regTest(){
+    console.log( this.regUser.value );
+  }
 }

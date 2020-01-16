@@ -12,7 +12,7 @@ mongoose.Promise = global.Promise;
 /* Conexion a la base de datos:
 3. Conectamos con el servidor: */
 mongoose.connect('mongodb://localhost:27017/eureka', { useNewUrlParser: true, useUnifiedTopology: true })
-// mongoose.connect('mongodb+srv://ankh:tanianrg1863@riskpsico-ow4gg.mongodb.net/booz?retryWrites=true', { useNewUrlParser: true })
+// mongoose.connect('mongodb+srv://ankh:<password>@riskpsico-ow4gg.mongodb.net/booz?retryWrites=true', { useNewUrlParser: true })
 .then(() => {
 	// Mostramos mensaje en la consola de conexion a la base de datos:
 	console.log("Bienvenido, la conexion a la base de datos ha sido establecida a mongodb:Localhost");

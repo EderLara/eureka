@@ -13,7 +13,7 @@
     <div class="col-md-8 mt-2 px-3">
       <h2 class="text-primary"><b>Registrate Como Usuario</b></h2>
       <!-- Agregamos a la etiqueta form, las propiedades para capturar los datos -->
-      <form (ngSubmit)="regTest(regUser)">
+      <form [formGroup]="regUser" (ngSubmit)="regTest()">
         <div class="form-row">
          <div class="form-group col-md-6">
           <label>Nombres</label>
