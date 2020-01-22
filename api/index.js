@@ -5,7 +5,7 @@ require('dotenv').config();
 /* Conexion a la base de datos:
 1. 	Cargamos la libreria mongoose: */
 const mongoose = require('mongoose');
-/* Agregamos app.js y el puerto de escucha: */
+/* Agregamos app.js, el puerto del servidor y el string de conexión de la base de datos: */
 const app = require('./app');
 const port = process.env.PORT;
 const database = process.env.DB_MONGO_LOCAL;
@@ -27,3 +27,5 @@ mongoose.connect(database, { useNewUrlParser: true, useUnifiedTopology: true })
 })
 // Si hay algún error, lo imprimimos:
 .catch(err =>console.log(err));
+
+
