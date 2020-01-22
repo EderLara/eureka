@@ -1,18 +1,20 @@
 /* Agregamos la instruccion strict para acceder a las nuevas funciones de javascript: */
-'use strict'
+'use strict';
+/* Cargamos las variables del entorno:*/
+require('dotenv').config();
 /* Conexion a la base de datos:
 1. 	Cargamos la libreria mongoose: */
 const mongoose = require('mongoose');
 /* Agregamos app.js y el puerto de escucha: */
 const app = require('./app');
-const port = 3800;
+const port = process.env.PORT;
+const database = process.env.DB_MONGO_LOCAL;
 /* Conexion a la base de datos:
 2.Para conectarnos a mongo debemos utilizar un metodo de promesas: */
 mongoose.Promise = global.Promise;
 /* Conexion a la base de datos:
 3. Conectamos con el servidor: */
-mongoose.connect('mongodb://localhost:27017/eureka', { useNewUrlParser: true, useUnifiedTopology: true })
-// mongoose.connect('mongodb+srv://ankh:<password>@riskpsico-ow4gg.mongodb.net/booz?retryWrites=true', { useNewUrlParser: true })
+mongoose.connect(database, { useNewUrlParser: true, useUnifiedTopology: true })
 .then(() => {
 	// Mostramos mensaje en la consola de conexion a la base de datos:
 	console.log("Bienvenido, la conexion a la base de datos ha sido establecida a mongodb:Localhost");
