@@ -9,6 +9,8 @@ let bcrypt = require('bcrypt-nodejs');
 let jwt = require('../services/jwt');
 // Cargamos el mongoose de paginacion:
 let mongoosePaginate = require('mongoose-pagination');
+// Cargamos el framework para trabajar con fechas:
+let moment = require('moment');
 // Libreria para manejo de archivos y de url:
 let fs = require('fs');
 let path = require('path');
