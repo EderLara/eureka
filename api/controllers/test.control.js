@@ -63,6 +63,7 @@ function saveUser(req, res){
 		test.estauser = 'Activo';
 
 		// Sentencias para consultar en la base de datos:
+		// Primero buscamos coincidencias en la base de datos:
 		Test.find({ $or: [
 					{ identificacion: test.identificacion},
 					{ email: test.email }

@@ -2,6 +2,7 @@
   "name": "view",
   "version": "0.0.0",
   "scripts": {
+    "postinstall": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
@@ -16,6 +17,7 @@
     "@angular/compiler": "~8.2.13",
     "@angular/core": "~8.2.13",
     "@angular/forms": "~8.2.13",
+    "@angular/localize": "^9.0.5",
     "@angular/platform-browser": "~8.2.13",
     "@angular/platform-browser-dynamic": "~8.2.13",
     "@angular/router": "~8.2.13",

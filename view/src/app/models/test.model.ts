@@ -18,4 +18,4 @@ export class Test{
         this.estauser = 'Activo';
     }
 }
-// Se pueden crear más clases, dependiendo del gusto del programador, pero para ser ordenados, se debe hacer de acuerdo a la modularidad propuesta en el desarrollo.
+
