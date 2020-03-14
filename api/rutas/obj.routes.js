@@ -12,6 +12,8 @@ const md_upload = multipart({ uploadDir: './uploads/objetos/'});
 // Rutas y métodos de acceso:
 // ruta de pruebas:
 api.get('/objetos', objCtrl.objTest);
-
+api.post('/newObj', objCtrl.saveObj);
+api.get('/getObj/:pagina?', objCtrl.getObjects);
+api.get('/findObj/:id', objCtrl.getObj);
 // Exportamos las rutas de objetos:
 module.exports = api;
