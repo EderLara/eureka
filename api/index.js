@@ -14,7 +14,7 @@ const database = process.env.DB_MONGO_LOCAL;
 mongoose.Promise = global.Promise;
 /* Conexion a la base de datos:
 3. Conectamos con el servidor: */
-mongoose.connect(database, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(database, { useNewUrlParser: true, useUnifiedTopology: true, useMongoClient: true })
 .then(() => {
 	// Mostramos mensaje en la consola de conexion a la base de datos:
 	console.log("Bienvenido, la conexion a la base de datos ha sido establecida a mongodb:Localhost");

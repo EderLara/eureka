@@ -9,6 +9,7 @@ let fs = require('fs');
 let path = require('path');
 // Cargamos el framework para trabajar con fechas:
 let moment = require('moment');
+let ahora = moment();
 
 // Variables con los mensajes a la petición:
 let msj200 = 'La petición se ha completado correctamente';
@@ -21,7 +22,6 @@ let msj500 = 'Ha ocurrido un error en la petición a la base de datos, revise la
 
 // Funciones de Pruebas.
 function objTest(req, res) {
-    let ahora = moment();
     res.status(200).send(
         {
             ObjCTRL: 'Accediendo a la ruta de prueba de Objetos',
@@ -74,6 +74,7 @@ function saveObj(req, res){
             } 
         });
     }else{
+        // Retornamos el mensaje de campos obligatorios: 
         return res.status(400).send({ msj400 });
     }
 }
@@ -113,7 +114,7 @@ function getObj(req, res) {
         if (err) return res.status(500).send({ msj500 });
         // Validamos la existencia del objeto en la base de datos:
         if (!objeto) return res.status(404).send({ msj404 });
-        // Si encuentra el objeto, retornamos los valores de este:
+        // Si encuentra el objeto, retornamos un mensaje de exito y los valores de este:
         return res.status(200).send({
             msj200,
             objeto
@@ -121,11 +122,32 @@ function getObj(req, res) {
     });
 }
 // ----------------------------------------------------------- //
+// A continuación una función para buscar coincidencias en la base de datos, en este caso solo será por un parámetro:
+// Función para buscar objetos que coincidan en la base de datos por nombre:
+function findObj (req, res) {
+    // Capturamos el dato en una expresión regular de tal forma que nos quede así: db.colllection.find({ attr: /variable/ i })
+    let dato = new RegExp(req.params.data, 'i');
+    // Buscamos en la base de datos en la coleccion objetos, todos los atributos que tengan ese 
+    Obj.find({ NombObjet: dato }).exec(( err, result )=>{
+        // Validamos que la conexión a la base de datos sea correcta:
+        if (err) return res.status(500).send({ msj500 });
+        // Validamos que obtengamos al menos una coincidencia:
+        if (result.length <= 0) return res.status(404).send({ msj404 });
+        // Retornamos el resultado de busqueda:
+        return res.status(200).send({
+            Objeto : result
+        });
+    });
+}
+// ----------------------------------------------------------- //
+
+// ----------------------------------------------------------- //
 // -------------------- FIN Funciones CRUD ------------------- //
 // Exportamos las funciones para su uso en las rutas:
 module.exports = {
     objTest,
     saveObj,
     getObjects,
-    getObj
+    getObj,
+    findObj
 }

@@ -15,5 +15,8 @@ api.get('/objetos', objCtrl.objTest);
 api.post('/newObj', objCtrl.saveObj);
 api.get('/getObj/:pagina?', objCtrl.getObjects);
 api.get('/findObj/:id', objCtrl.getObj);
+api.get('/searchObj/:data', objCtrl.findObj);
+
+
 // Exportamos las rutas de objetos:
 module.exports = api;
