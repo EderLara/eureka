@@ -52,7 +52,9 @@ function saveObj(req, res){
                 {NombObjet : obj.NombObjet}
             ]
         }).exec((err, objRow)=>{
+            // Validamos la conexión a la base de datos y/o errores en consulta
             if (err) return res.status(500).send({ error: msj500 });
+            // Si no encuentra ninguna coincidencia, volvemos un mensaje de ninguna coincidencia:
             if (objRow && objRow.length >= 1) {
                 return res.status(409).send({ message: msj409 });
             } else {
