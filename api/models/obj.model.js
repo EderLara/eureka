@@ -8,6 +8,7 @@ let Schema = mongoose.Schema;
 const objSchema = Schema({
     idRFID: String,
     NombObjet : String,
+    StateObj: String,
     createAt : Date 
 });
 

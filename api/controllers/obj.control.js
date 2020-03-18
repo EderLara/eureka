@@ -9,7 +9,7 @@ let fs = require('fs');
 let path = require('path');
 // Cargamos el framework para trabajar con fechas:
 let moment = require('moment');
-let ahora = moment();
+let ahora = moment().format('LTS');
 // Cargamos el archivo de mensajes:
 const { msj } = require('./msjs');
 
@@ -39,6 +39,7 @@ function saveObj(req, res){
         // Asignamos los valores obtenidos del formulario a el modelo del objeto:
         obj.idRFID = params.idr;
         obj.NombObjet = params.nombojb;
+        obj.StateObj = 'Activo';
         obj.createAt = moment();
         // Operaciones de Base de datos:
         // Primero: Consultamos que no exista el objeto en la base de datos:
@@ -115,7 +116,7 @@ function getObj(req, res) {
         // Si encuentra el objeto, retornamos un mensaje de exito y los valores de este:
         return res.status(200).send({
             mesagge: msj.m200,
-            Objeto
+            objeto
         });
     });
 }
@@ -161,7 +162,43 @@ function editObj(req, res) {
     });
 }
 // ----------------------------------------------------------- //
+// Función para agregar un atributo a muchas colecciones:
+function editAll (req, res) {
+    // Asignamos a una variable el nuevo atributo:
+    let StateObj = 'Activo';
+    // Actualizamos en la base de datos:
+    Obj.updateMany({}, {$set : { StateObj }}, { multi: true }, (err, objetos)=>{
+        if (err) return res.status(500).send({ error: msj.m500 });
+        if (!objetos) return res.status(404).send({ mesagge: msj.m404 });
+        return res.status(200).send({
+            mesagge: msj.m200,
+            Objetos: objetos
+        });
+    });
+
+}
+// ----------------------------------------------------------- //
+// Función para eliminar lógicamente un objeto:
+function delObj (req, res) {
+    // Capturamos el id del objeto:
+    let objId = req.params.id;
+    // Asignamos el valor al estado del objeto:
+    let deleted = 'Inactivo';
+    // Actualizamos el campo statusObj de la collection:
+    Obj.findByIdAndUpdate(objId, {$set: { StateObj: deleted}}, { new:true}, (err, objdeleted)=>{
+        if (err) return res.status(500).send({ error: msj.m500 });
+        if (!objdeleted) return res.status(404).send({ error: msj.m404 });
+        return res.status(200).send({
+            mesagge: msj.m200,
+            Objeto: objdeleted
+        });
+    });
+}
+// ----------------------------------------------------------- //
+
+// ----------------------------------------------------------- //
 // -------------------- FIN Funciones CRUD ------------------- //
+
 // Exportamos las funciones para su uso en las rutas:
 module.exports = {
     objTest,
@@ -169,5 +206,7 @@ module.exports = {
     getObjects,
     getObj,
     findObj,
-    editObj
+    editObj,
+    editAll,
+    delObj
 }
