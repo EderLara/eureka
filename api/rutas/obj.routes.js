@@ -10,13 +10,15 @@ const multipart = require('connect-multiparty');
 const md_upload = multipart({ uploadDir: './uploads/objetos/'});
 
 // Rutas y métodos de acceso:
-// ruta de pruebas:
+// Ruta de pruebas:
 api.get('/objetos', objCtrl.objTest);
+// Rutas CRUD:
 api.post('/newObj', objCtrl.saveObj);
 api.get('/getObj/:pagina?', objCtrl.getObjects);
 api.get('/findObj/:id', objCtrl.getObj);
 api.get('/searchObj/:data', objCtrl.findObj);
-
+api.put('/editObj/:id', objCtrl.editObj);
+// Ruta para dar de baja un objeto: 
 
 // Exportamos las rutas de objetos:
 module.exports = api;

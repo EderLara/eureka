@@ -8,6 +8,7 @@ const mongoose = require('mongoose');
 /* Agregamos app.js, el puerto del servidor y el string de conexión de la base de datos: */
 const app = require('./app');
 const port = process.env.PORT;
+const path = process.env.BASE_URL;
 const database = process.env.DB_MONGO_LOCAL;
 /* Conexion a la base de datos:
 2.Para conectarnos a mongo debemos utilizar un metodo de promesas: */
@@ -21,8 +22,8 @@ mongoose.connect(database, { useNewUrlParser: true, useUnifiedTopology: true, us
 	// Encendemos el servidor NodeJS:
 	app.listen(port,() => {
 		// Mostramos mensaje de conexión al servidor:
-		console.log("Servidor NodeJS corriendo en: http://localhost:"+port);
-		console.log("Podemos probar la api desde: http://localhost:"+port+"/api/ruta");
+		console.log("Servidor NodeJS corriendo en: "+path+port);
+		console.log("Podemos probar la api desde: "+path+port+"/api/ruta");
 	})
 })
 // Si hay algún error, lo imprimimos:
