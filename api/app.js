@@ -11,7 +11,7 @@ const morgan = require('morgan');
 // Cargamos la rutas de los controles:
 const rutastest = require('./rutas/test.routes');
 const rutasobjs = require('./rutas/obj.routes');
-
+const rutausers = require('./rutas/usr.routes');
 /* Cargar Middlewares: */
 app.use(bodyParser.urlencoded({extended : false}));
 app.use(bodyParser.json());
@@ -29,6 +29,7 @@ app.use(function(req, res, next){
 // Reescribimos la url para que cargue desde /api así: http://localhost:3800/api/test:
 app.use('/api', rutastest);
 app.use('/api', rutasobjs);
+app.use('/api', rutausers);
 
 // Exportamos la variable app:
 module.exports = app;

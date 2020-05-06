@@ -1,6 +1,6 @@
 <!-- Menú Principal -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">Eureka | App Test&nbsp;<img src="{{ brand }}" width="50" alt=""></a>
+  <a class="navbar-brand" [routerLink]="['']">Avianca | SENA CTMA&nbsp;<img src="{{ brand }}" width="50" alt=""></a>
   
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -9,26 +9,26 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
+        <a class="nav-link" [routerLink]="['']">Inicio <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" [routerLink]="['equipo']">Nosotros</a>
+        <a class="nav-link" [routerLink]="['usuarios']" tabindex="-1" aria-disabled="true"><i class="fas fa-users text-success"></i>&nbsp;Usuarios</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" [routerLink]="['zonas']"><i class="fas fa-map-marked-alt text-primary"></i>&nbsp;Zonas</a>
       </li>
       <li class="nav-item active dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Servicios
+        <a class="nav-link dropdown-toggle" [routerLink]="['informes']" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-file-medical-alt text-warning"></i>&nbsp;Reportes
         </a>
         <div class="dropdown-menu right" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">BackEnd</a>
-          <a class="dropdown-item" href="#">FrontEnd</a>
-          <a class="dropdown-item" href="#">FullStack</a>
+          <a class="dropdown-item" href="#">Informe de ...</a>
+          <a class="dropdown-item" href="#">Informe de ...</a>
+          <a class="dropdown-item" href="#">Informe de ...</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Soluciones BigData</a>
-          <a class="dropdown-item" href="#">Análisis de Datos</a>
+          <a class="dropdown-item" href="#">Informe de ...</a>
+          <a class="dropdown-item" href="#">Informe de ...</a>
         </div>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Catálogo</a>
       </li>
       <li class="nav-item active">
         <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Nuestra Red</a>
@@ -36,7 +36,7 @@
     </ul>
     <ul class="navbar-nav my-2 my-lg-0">
       <li class="nav-item active">
-        <a href="https://classroom.google.com/u/1/c/MzMzMTQzOTU2MzRa" target="_blank" placement="bottom" ngbTooltip="Gloogle Classroom" tooltipClass="my-freaky-tooltip" class="nav-link text-danger"><i class="fab fa-google"></i>&nbsp;</a>
+        <a href="https://classroom.google.com/u/1/c/MzE5Nzc1MDcxNTha" target="_blank" placement="bottom" ngbTooltip="Gloogle Classroom" tooltipClass="my-freaky-tooltip" class="nav-link text-danger"><i class="fab fa-google"></i>&nbsp;</a>
       </li>
       <li class="nav-item active">
         <a href="https://github.com/EderLara/eureka" target="_blank" placement="bottom" ngbTooltip="Repositorio" tooltipClass="my-freaky-tooltip" class="nav-link"><i class="fab fa-github"></i>&nbsp;</a>

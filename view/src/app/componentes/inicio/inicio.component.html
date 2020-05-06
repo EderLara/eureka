@@ -1,22 +1,29 @@
-<div class="jumbotron jumbotron-fluid bgfondo text-light px-4">
-    <h1 class="display-4">Hello, Test!</h1>
-    <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-    <hr class="my-4">
-    <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-    <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-</div>
-<section class="container-fluid px-3">
+<section class="container mt-2">
     <div class="row">
-        <!-- Sección de promos -->
-        <div class="card col-sm-4">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
+        <!-- Sección de configuracion y accesos directos -->
+        <div class="card-deck">
+            <div class="card">
+              <h1 class="text-center display-1 card-img-top"><a [routerLink]="['usuarios']"><i class="fas fa-users text-success"></i></a></h1>
+              <div class="card-body">
+                <h5 class="card-title text-center"><a [routerLink]="['usuarios']">Usuarios</a></h5>
+                <p class="card-text text-justify">Ingrese al módulo, agregue, edite su identificación RFID y gestione sus usuarios</p>
+              </div>
             </div>
-        </div>
+            <div class="card">
+                <h1 class="text-center display-1 card-img-top"><a [routerLink]="['zonas']"><i class="fas fa-map-marked-alt text-primary"></i></a></h1>
+              <div class="card-body">
+                <h5 class="card-title text-center"><a [routerLink]="['zonas']">Zonas</a></h5>
+                <p class="card-text text-justify">Agregue y edite Zonas</p>
+              </div>
+            </div>
+            <div class="card">
+                <h1 class="text-center display-1 card-img-top"><a [routerLink]="['informes']"><i class="fas fa-file-medical-alt text-warning"></i></a></h1>
+              <div class="card-body">
+                <h5 class="card-title text-center"><a [routerLink]="['informes']">Reportes</a></h5>
+                <p class="card-text">Informes de usuarios y zonas</p>
+              </div>
+            </div>
+          </div>
         <!-- Fin de Promos -->
     </div>
 </section>

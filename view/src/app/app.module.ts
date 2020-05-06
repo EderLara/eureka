@@ -11,6 +11,11 @@ import { InicioComponent } from './componentes/inicio/inicio.component';
 import { LinkComponent } from './componentes/link/link.component';
 import { LoginComponent } from './componentes/login/login.component';
 import { RegistroComponent } from './componentes/registro/registro.component';
+import { UsuariosComponent } from './componentes/usuarios/usuarios.component';
+import { InformesComponent } from './componentes/informes/informes.component';
+import { ZonasComponent } from './componentes/zonas/zonas.component';
+// Servicios:
+import { UsuariosService } from './services/usuarios.service';
 
 @NgModule({
   declarations: [
@@ -18,7 +23,10 @@ import { RegistroComponent } from './componentes/registro/registro.component';
     InicioComponent,
     LinkComponent,
     LoginComponent,
-    RegistroComponent
+    RegistroComponent,
+    UsuariosComponent,
+    InformesComponent,
+    ZonasComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +36,9 @@ import { RegistroComponent } from './componentes/registro/registro.component';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    UsuariosService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
