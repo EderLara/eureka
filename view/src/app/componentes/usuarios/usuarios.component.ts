@@ -25,6 +25,9 @@ export class UsuariosComponent implements OnInit {
   public pages;
   public users: Usuarios[];
   public dato;
+  public userUdt;
+  public rfidUdt;
+
 
   constructor(
     private _ruta : ActivatedRoute,
@@ -66,7 +69,6 @@ export class UsuariosComponent implements OnInit {
       this.getUsers(this.page);
     });
   }
-
   // Función para traer todos los usuarios:
   getUsers(page){
     this._ServiceUser.getUsers(page).subscribe(
@@ -97,9 +99,14 @@ export class UsuariosComponent implements OnInit {
     );
   }
 
-  findUser(idU){
-    this.dato = new this.users();
+  // findUser(idU){
+  //   this.dato = new this.users();
 
+  // }
+
+  // Función para adicionar RFID al usuarios:
+  addRfid(UdtUser){
+    this.userUdt = UdtUser;
+    console.log(this.userUdt);
   }
-
 }

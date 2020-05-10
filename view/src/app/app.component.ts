@@ -8,4 +8,5 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'view';
   brand = 'assets/media/img/Logo.png';
+  senab = 'assets/media/img/senalogo.png';
 }

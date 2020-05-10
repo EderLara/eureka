@@ -39,11 +39,11 @@
                 <tbody *ngIf="!finder">
                   <tr *ngFor="let user of users">
                     <td scope="row">{{ user.Amos }}</td>
-                    <td>{{ user._id}}</td>
+                    <td>{{ user.identificacion }}</td>
                     <td> {{ user.nombres }} </td>
                     <td> {{ user.apellidos }} </td>
                     <td class="text-center">
-                      <button type="button" data-toggle="modal" data-target="#modalrfid" class="btn btn-sm btn-success mr-2"><i class="fas fa-plus"></i>&nbsp;RFID</button>
+                      <button (click)=" addRfid(user)" type="button" data-toggle="modal" data-target="#modalrfid" class="btn btn-sm btn-success mr-2"><i class="fas fa-plus"></i>&nbsp;RFID</button>
                       <button type="button" class="btn btn-sm btn-danger"><i class="fas fa-user-slash"></i>&nbsp;Desactivar</button>
                     </td>
                   </tr>
@@ -72,7 +72,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="modalrfidTitle">Adicionar RFID a Usuario:</h5>
+          <h5 class="modal-title text-center" id="modalrfidTitle"><i class="text-primary fas fa-user-tag"></i>&nbsp;{{ userUdt.nombres+" "+userUdt.apellidos }}</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -80,9 +80,10 @@
         <div class="modal-body">
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                  <span class="input-group-text" id="inputGroup-sizing-default"><i class="fas fa-id-card"></i></span>
+                  <span class="input-group-text" id="inputGroup-sizing-default">RFID&nbsp;<i class="fas fa-id-card"></i></span>
                 </div>
-                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                <input type="hidden" name="userid" value="{{userUdt._id}}">
+                <input type="text" class="form-control" aria-describedby="inputGroup-sizing-default">
               </div>
         </div>
         <div class="modal-footer">

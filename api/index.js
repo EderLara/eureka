@@ -9,13 +9,13 @@ const mongoose = require('mongoose');
 const app = require('./app');
 const port = process.env.PORT;
 const path = process.env.BASE_URL;
-const database = process.env.DB_MONGO_LOCAL;
+const database = process.env.DB_MONGO;
 /* Conexion a la base de datos:
 2.Para conectarnos a mongo debemos utilizar un metodo de promesas: */
 mongoose.Promise = global.Promise;
 /* Conexion a la base de datos:
 3. Conectamos con el servidor: */
-mongoose.connect(database, { useNewUrlParser: true, useUnifiedTopology: true, useMongoClient: true })
+mongoose.connect(database, { useNewUrlParser: true })
 .then(() => {
 	// Mostramos mensaje en la consola de conexion a la base de datos:
 	console.log("Bienvenido, la conexion a la base de datos ha sido establecida a mongodb:Localhost");

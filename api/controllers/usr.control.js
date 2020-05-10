@@ -165,13 +165,10 @@ function updateUser(req, res){
 	var userId = req.params.id;
 	var update = req.body;
 
-	// Borrar la propiedad password:
+	// nos aseguramos que no se cargue otro código de identificación del usuario:
 	delete update.Amos;
-
-	if (userId != req.user.sub) {
-		return res.status(500).send({ message: 'No tienes permiso para actualizar los datos de user, debes iniciar sesion' });
-	}
-	Test.findByIdAndUpdate(userId, update, {new: true}, (err, userUpdated) =>{
+	// Procedemos a buscar y modificar
+	User.findByIdAndUpdate(userId, update, {new: true}, (err, userUpdated) =>{
 		// Si ocurre un error inesperado de servicios:
 		if(err) return res.status(500).send({message: 'Error en la Peticion, error de servidor' });
 		// Si no se encuentran datos del test:
