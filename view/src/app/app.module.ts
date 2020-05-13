@@ -16,6 +16,7 @@ import { InformesComponent } from './componentes/informes/informes.component';
 import { ZonasComponent } from './componentes/zonas/zonas.component';
 // Servicios:
 import { UsuariosService } from './services/usuarios.service';
+import { ZonaService } from './services/zona.service';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { UsuariosService } from './services/usuarios.service';
     HttpClientModule
   ],
   providers: [
-    UsuariosService
+    UsuariosService,
+    ZonaService
   ],
   bootstrap: [AppComponent]
 })

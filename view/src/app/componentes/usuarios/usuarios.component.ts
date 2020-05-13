@@ -27,6 +27,7 @@ export class UsuariosComponent implements OnInit {
   public dato;
   public userUdt;
   public rfidUdt;
+  public estaUpdt;
 
 
   constructor(
@@ -108,5 +109,25 @@ export class UsuariosComponent implements OnInit {
   addRfid(UdtUser){
     this.userUdt = UdtUser;
     console.log(this.userUdt);
+  }
+
+  rfidToUser(id){
+    this._ServiceUser.UpdateUser(id).subscribe(
+      res=>{
+      if (!res) {
+        this.estaUpdt = "Error al actualizar el RFID del usuario";
+      }else{
+        this.rfidUdt = res.users;
+        console.log(this.rfidUdt);
+      }
+    },
+    error=>{
+        var MsjError = <any>error;
+        console.log(MsjError);
+
+        if (MsjError != null) {
+          this.status = 'error';
+        }
+    })
   }
 }

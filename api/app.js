@@ -12,6 +12,7 @@ const morgan = require('morgan');
 const rutastest = require('./rutas/test.routes');
 const rutasobjs = require('./rutas/obj.routes');
 const rutausers = require('./rutas/usr.routes');
+const rutazonas = require('./rutas/zona.routes');
 /* Cargar Middlewares: */
 app.use(bodyParser.urlencoded({extended : false}));
 app.use(bodyParser.json());
@@ -30,6 +31,7 @@ app.use(function(req, res, next){
 app.use('/api', rutastest);
 app.use('/api', rutasobjs);
 app.use('/api', rutausers);
+app.use('/api', rutazonas);
 
 // Exportamos la variable app:
 module.exports = app;
