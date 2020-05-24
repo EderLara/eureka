@@ -17,6 +17,7 @@ import { ZonasComponent } from './componentes/zonas/zonas.component';
 // Servicios:
 import { UsuariosService } from './services/usuarios.service';
 import { ZonaService } from './services/zona.service';
+import { FiltroUserPipe } from './pipes/filtro-user.pipe';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ZonaService } from './services/zona.service';
     RegistroComponent,
     UsuariosComponent,
     InformesComponent,
-    ZonasComponent
+    ZonasComponent,
+    FiltroUserPipe
   ],
   imports: [
     BrowserModule,

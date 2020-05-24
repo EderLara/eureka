@@ -17,4 +17,6 @@ export class ZonaService{
     this.url = GLOBAL.url;
     this.headers = new HttpHeaders().set('Content-Type','application/json');
    }
+   /* ------------------------------- Funciones de Zonas Services ------------------------------- */
+   // getZonas()
 }

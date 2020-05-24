@@ -28,7 +28,8 @@ export class UsuariosComponent implements OnInit {
   public userUdt;
   public rfidUdt;
   public estaUpdt;
-
+  // elemento para el filtro:
+  resultUser = '';
 
   constructor(
     private _ruta : ActivatedRoute,
@@ -87,6 +88,7 @@ export class UsuariosComponent implements OnInit {
             // Si la pagina que ingreso es mayor a las que hay, me devuelve a la primera pag:
             this._rutero.navigate(['/usuarios',1]);
           }
+          localStorage.setItem('Usuarios', JSON.stringify(this.users));
         }
       },
       error =>{

@@ -6,7 +6,7 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text bg-primary text-light" id="inputGroup-sizing-lg">Buscar Usuario </span>
                 </div>
-                <input type="text" class="form-control" placeholder="Busque por Código de Identificación o Número de Cédula" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+                <input [(ngModel)]="resultUser" name="resultUser" type="text" class="form-control" placeholder="Busque por Código de Identificación" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
               </div>
         </div>
 
@@ -15,12 +15,15 @@
             <h2 class="text-center mt-3 text-danger">Usuarios Registrados: <br><span class="text-success">{{ total }}</span></h2>
           </div>
           <div class="col-sm-12 mt-2 mb-0 d-flex justify-content-end">
+            <div class="col-sm-6">
+              <span>Página<br>{{ page }} de {{ pages }}</span>
+            </div>
             <div *ngIf="page > 1">
-              <a [routerLink]="['/usuarios', prevpage]" class="btn btn-outline-info mt-2">Anterior&nbsp;<i class="fas fa-backward"></i></a>
+              <a [routerLink]="['/usuarios', prevpage]" class="btn btn-outline-info mt-2">Ant.&nbsp;<i class="fas fa-backward"></i></a>
             </div>
             <span class="text-">&nbsp;</span>
             <div *ngIf="pages != page">
-              <a [routerLink]="['/usuarios', nextpage]" class="btn btn-outline-info mt-2"><i class="fas fa-forward"></i>&nbsp;Siguiente</a>
+              <a [routerLink]="['/usuarios', nextpage]" class="btn btn-outline-info mt-2"><i class="fas fa-forward"></i>&nbsp;Sig.</a>
             </div>
           </div>
         </div>
@@ -37,7 +40,7 @@
                   </tr>
                 </thead>
                 <tbody *ngIf="!finder">
-                  <tr *ngFor="let user of users">
+                  <tr *ngFor="let user of users | filtroUser: resultUser">
                     <td scope="row">{{ user.Amos }}</td>
                     <td>{{ user.identificacion }}</td>
                     <td> {{ user.nombres }} </td>
@@ -83,7 +86,7 @@
                   <span class="input-group-text" id="inputGroup-sizing-default">RFID&nbsp;<i class="fas fa-id-card"></i></span>
                 </div>
                 <input type="hidden" name="userid" value="{{userUdt._id}}">
-                <input type="text" class="form-control" aria-describedby="inputGroup-sizing-default">
+                <input type="text" autofocus class="form-control" aria-describedby="inputGroup-sizing-default">
               </div>
         </div>
         <div class="modal-footer">
