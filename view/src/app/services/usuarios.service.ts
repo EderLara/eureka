@@ -32,8 +32,8 @@ export class UsuariosService {
     return this._http.get(this.url+'/findUser/'+ dato, {headers: this.headers});
    }
    // Actualizar usuario:
-   UpdateUser(user):Observable<any>{
+   UpdateUser(id: String, user : Usuarios):Observable<any>{
      let params = JSON.stringify(user);
-     return this._http.put(this.url+'/userudt/', params, {headers: this.headers});
+     return this._http.put(this.url+'/userudt/'+ id, params, {headers: this.headers});
    }
 }

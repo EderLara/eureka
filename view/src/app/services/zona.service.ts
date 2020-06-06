@@ -18,5 +18,7 @@ export class ZonaService{
     this.headers = new HttpHeaders().set('Content-Type','application/json');
    }
    /* ------------------------------- Funciones de Zonas Services ------------------------------- */
-   // getZonas()
+   getZonas():Observable<any>{
+    return this._http.get(this.url+'/reportZona/', {headers: this.headers});
+   }
 }

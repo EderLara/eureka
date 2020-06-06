@@ -113,7 +113,7 @@ function getUsers(req, res){
 		pagina = req.params.pagina;
 	}
 	// Variable para determinar la cantidad de users conectados
-	var itemsPerPage = 100;
+	var itemsPerPage = 800;
 	// Query de busqueda de users en la BD:
 	User.find().sort('_id').paginate(pagina, itemsPerPage, (err, users, total) =>{
 		// validamos si hay algun error de conexion a la bd o de ejecucion:
@@ -166,7 +166,7 @@ function updateUser(req, res){
 	var update = req.body;
 
 	// nos aseguramos que no se cargue otro código de identificación del usuario:
-	delete update.Amos;
+	
 	// Procedemos a buscar y modificar
 	User.findByIdAndUpdate(userId, update, {new: true}, (err, userUpdated) =>{
 		// Si ocurre un error inesperado de servicios:

@@ -26,8 +26,10 @@ export class UsuariosComponent implements OnInit {
   public users: Usuarios[];
   public dato;
   public userUdt;
+  public id;
   public rfidUdt;
   public estaUpdt;
+  public rfidLargo;
   // elemento para el filtro:
   resultUser = '';
 
@@ -78,8 +80,6 @@ export class UsuariosComponent implements OnInit {
         if (!res.users) {
           this.status = 'error de respuesta';
         } else {
-          // Verificamos en la consola que el arreglo está llegando:
-          console.log(res.users);
           this.total = res.total;
           this.pages = res.paginas;
           this.users = res.users;
@@ -102,25 +102,21 @@ export class UsuariosComponent implements OnInit {
     );
   }
 
-  // findUser(idU){
-  //   this.dato = new this.users();
-
-  // }
-
   // Función para adicionar RFID al usuarios:
   addRfid(UdtUser){
     this.userUdt = UdtUser;
-    console.log(this.userUdt);
+    this.id = UdtUser._id;
   }
 
-  rfidToUser(id){
-    this._ServiceUser.UpdateUser(id).subscribe(
+  onSubmit(actUser){
+    console.log(actUser);
+    this._ServiceUser.UpdateUser(this.id, actUser.value).subscribe(
       res=>{
       if (!res) {
         this.estaUpdt = "Error al actualizar el RFID del usuario";
+        console.log(this.estaUpdt)
       }else{
-        this.rfidUdt = res.users;
-        console.log(this.rfidUdt);
+        console.log(res.user);
       }
     },
     error=>{
@@ -129,7 +125,9 @@ export class UsuariosComponent implements OnInit {
 
         if (MsjError != null) {
           this.status = 'error';
+          console.log(this.status);
         }
     })
-  }
+   }
+
 }

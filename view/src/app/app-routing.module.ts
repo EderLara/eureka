@@ -8,7 +8,6 @@ import { UsuariosComponent } from './componentes/usuarios/usuarios.component';
 import { InformesComponent } from './componentes/informes/informes.component';
 import { ZonasComponent } from './componentes/zonas/zonas.component';
 
-
 const routes: Routes = [
     {path: '', component: InicioComponent},
     {path: 'inicio', component: InicioComponent},

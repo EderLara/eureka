@@ -4,7 +4,7 @@ export interface Usuarios {
     nombres: string;
     apellidos: string;
     Amos: string;
-    RFID?: string;
+    RFID: string;
     estado: string;
 }
 
